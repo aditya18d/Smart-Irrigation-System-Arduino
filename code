@@ -1,0 +1,28 @@
+
+---
+
+# 4️⃣ Arduino Code File
+
+📌 **Create:** `code/smart_irrigation.ino`
+
+```cpp
+int soil_sensor = 0;
+
+void setup() {
+  pinMode(A0, INPUT);
+  pinMode(7, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  soil_sensor = analogRead(A0);
+  Serial.println(soil_sensor);
+
+  if (soil_sensor < 100) {
+    digitalWrite(7, HIGH);   // Pump ON
+  } else {
+    digitalWrite(7, LOW);    // Pump OFF
+  }
+
+  delay(1000);
+}
